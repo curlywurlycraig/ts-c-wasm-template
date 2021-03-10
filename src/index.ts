@@ -1,10 +1,9 @@
-function runBench(n: number): number {
-    let result = 0;
+function runBench(a: number, b: number, n: number): number {
+    var c = 1.0;
     for (var i = 0; i < n; i++) {
-        result++;
+        c = c * a * b;
     }
-
-    return result;
+    return c;
 }
 
 async function main() {
@@ -46,12 +45,14 @@ async function main() {
 
     main();
 
+    const n = 1000000;
+
     const jsPerfStart = performance.now();
-    const jsResult = runBench(100000000);
+    const jsResult = runBench(1, 1.0001, n);
     const jsPerfEnd = performance.now();
 
     const cPerfStart = performance.now();
-    const cResult = cBench(100000000);
+    const cResult = cBench(1, 1.0001, n);
     const cPerfEnd = performance.now();
 
     console.log('js: ', jsPerfEnd - jsPerfStart, jsResult);
