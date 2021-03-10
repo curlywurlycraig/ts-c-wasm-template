@@ -1,0 +1,1 @@
+A sensible project setup for building TypeScript + C WASM projects.
